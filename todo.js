@@ -34,11 +34,11 @@
     const populateTodos = () => {
         arrayOfTodos.forEach (todo => {
             let newListItem = document.createElement('li')
-            let text = document.createTextNode(arrayOfTodos[0].userId)
-            newListItem.appendChild(text)
+            let text = document.createTextNode(arrayOfTodos[0].title)
+            newListItem.appendChild(document.createTextNode(arrayOfTodos[0].title))
             toDoList.appendChild(newListItem)
 
-            console.log(arrayofTodos[0].userId)
+            console.log(arrayofTodos[0].title)
         })
     
     }
