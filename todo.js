@@ -31,14 +31,43 @@
         console.log(arrayOfTodos)
     }
     
-    const populateTodos = () => {
-        arrayOfTodos.forEach (todo => {
+    const populateTodos = (todos) => {
+        console.log(todos)
+        const popOl = document.getElementById("todo-list")
+        popOl.innerHTML=''
+        todos.forEach (todo => {
             let newListItem = document.createElement('li')
-            let text = document.createTextNode(arrayOfTodos[0].title)
-            newListItem.appendChild(document.createTextNode(arrayOfTodos[0].title))
-            toDoList.appendChild(newListItem)
+            let text = document.createTextNode(todo.title)
+            newListItem.appendChild(text)
+            popOl.appendChild(newListItem)
 
-            console.log(arrayofTodos[0].title)
+            console.log(todo.title)
         })
     
     }
+
+const popTodos = () => {
+    console.log('here')
+    populateTodos(arrayOfTodos)
+}
+let filtered = [];
+const byUser = () => {
+filterByID()
+populateTodos(filtered)
+}
+  const filterByID = () => {
+      let userID=document.getElementById('userID').value;
+      filtered = arrayOfTodos.filter(Todo => Todo.userId == userID)
+  }  
+
+  const completed = () => {
+    filterByID()
+    const filter = filtered.filter(Todo => Todo.completed === true)
+    populateTodos(filter)
+  }
+
+  const incomplete = () => {
+    filterByID()
+    const filter = filtered.filter(Todo => Todo.completed !== true)
+    populateTodos(filter)
+  }
